@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}Detail{% endblock title %}
@@ -30,15 +31,18 @@
   </ul>
   <div class="card-body">
     <div class="row text-center">
+      {%if request.user.is_authenticated%}
         <div class="col-md-4">
             <a href="{% url 'restaurant-update' restaurant.id %}" class="btn btn-outline-primary btn-block">Update</a>
         </div>
         <div class="col-md-4">
             <a href="{% url 'restaurant-delete' restaurant.id %}" class="btn btn-outline-danger btn-block">Delete</a>
         </div>
+
         <div class="col-md-4">
             <a href="{% url 'item-create' restaurant.id %}" class="btn btn-outline-success btn-block">Add Item</a>
         </div>
+      {%endif%}
     </div>
   </div>
 </div>
